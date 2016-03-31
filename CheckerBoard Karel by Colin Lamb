@@ -1,0 +1,58 @@
+public class CheckerboardKarel extends SuperKarel {
+
+	public void run () {
+		for (int i = 0; i < 8; i++) {
+			placeOddRow ();
+			moveBack();
+			placeEvenRow();
+			moveBack();
+			placeOddRow();
+		}
+	}
+	/* 
+	 * This method tells Karel to place a beeper, then move twice, then place another beeper until
+	 * blocked by a wall.
+	 */
+	
+	private void placeOddRow() {
+		while (frontIsClear()) {
+			putBeeper();
+			move();
+			if (frontIsClear()) {
+				move();
+			}
+		}
+	} 
+/*
+ * This method moves Karel back to the beginning of the newly placed row of beepers,
+ * then tells it to move up to the next row, it also tests for walls with an "if" loop.
+ */
+	private void moveBack() {
+		turnAround();
+		if (frontIsClear()) {
+		for (int i = 0; i < 7; i++) {
+			move();
+			}
+		turnRight();
+		move();
+		turnRight();
+		}
+	}
+
+	/*
+	 * This method tells Karel to place the next row of beepers to complete its objective of
+	 * creating a checkerboard pattern.
+	 */
+private void placeEvenRow() {
+	while (frontIsClear()) {
+		move();
+		putBeeper();
+	if (frontIsClear()) {
+		move();
+	
+		}
+	}
+}
+}
+	
+		
